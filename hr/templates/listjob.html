@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+{%block mainblock%}
+
+<div class="">
+    <h1>Job List</h1>
+    <hr class="border-3 w-25"><br>
+</div>
+<!-- <div>
+    <a href="{%url 'listjob'%}">ListAllJobs</a>
+    <a href="{%url 'listjob'%}?status=True">Active Jobs</a>
+    <a href="{%url 'listjob'%}?status=False">Inactive Jobs</a>
+  </div> -->
+{%for d in data%}
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            {%if d.poster%}
+            <img src="{{d.poster.url}}" class="img-fluid rounded-start" alt="...">
+            {%endif%}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{d.title}}</h5>
+                <p class="card-text">{{d.description}}</p>
+                <p class="card-text">{{d.company}}</p>
+                <p class="card-text">{{d.salary}}</p>
+                <p class="card-text">{{d.contact}}</p>
+                <p>Vaccancies : {{d.vaccancies}}</p>
+                <div class="col-md-3">
+
+                    <a href="{%url 'editjob' d.id %}" class="btn btn-outline-warning  ">Edit</a>
+                    <a href="" class="btn btn-outline-warning  ">View</a>
+                    <a href="{%url 'deletejob' d.id%}" class="btn btn-outline-danger ">Delete</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+{%endblock%}

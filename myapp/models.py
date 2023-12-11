@@ -20,6 +20,7 @@ class Jobs(models.Model):
     qualification=models.CharField(max_length=200)
     category=models.ForeignKey(Category,on_delete=models.DO_NOTHING)
     status=models.BooleanField(default=True)
+    company=models.CharField(max_length=200,null=True)
 
     def __str__(self) -> str:
         return self.title
