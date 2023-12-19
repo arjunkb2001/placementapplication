@@ -2,7 +2,7 @@ from django.urls import path
 from hr.views import *
 
 urlpatterns = [
-    path("signin",SiginView.as_view(),name="signin"),
+    path("",SiginView.as_view(),name="signin"),
     path("index",DashbordView.as_view(),name="indexhr"),
     path("logout",SignoutView.as_view(),name="signout"),
     path("category",CategoryView.as_view(),name="category"),

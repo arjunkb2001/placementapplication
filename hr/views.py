@@ -23,7 +23,10 @@ class SiginView(FormView):
             if user_object:
                 login(request,user_object)
                 print("successs")
-                return redirect("indexhr")
+                if request.user.is_superuser:
+                    return redirect("indexhr")
+                else:
+                    return redirect("indexseeker")
         print("failed")
         return render(request,"signin.html",{"form":form})
 

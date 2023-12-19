@@ -1,0 +1,23 @@
+{%extends "jobseeker/base.html"%}
+{%block mainblock%}
+
+<div class="container d-flex justify-content-around">
+        <form action="" method="post" class="bg-white m-5 p-5 rounded-3" enctype="multipart/form-data">
+                {%csrf_token%}
+                <p class="fw-bold fs-4 ">Profile</p>
+                <hr class="mb-5 w-25 border-4">
+                <div class=" row">
+                        {{form.as_p}}
+                        
+                        <div class="text-center">
+                                <button class="btn btn-dark mt-4 mb-4 w-50">Submit</button>
+                                <br>
+
+                        </div>
+
+
+                </div>
+        </form>
+</div>
+
+{%endblock%}

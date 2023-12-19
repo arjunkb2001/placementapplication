@@ -26,7 +26,7 @@
             <div class="col-2 px-5 pt-5 bg-dark " id="sticky-sidebar" style="min-height: 100vh;">
                 <div class="sticky-top">
                     <div class="nav flex-column">
-                        <p class="fw-bold fs-4 text-center text-light">Admin / User</p>
+                        <p class="fw-bold fs-4 text-center text-light">Admin</p>
                         <hr class="text-light">
                         <a href="{%url 'indexhr'%}"
                             class="text-light text-decoration-none mt-4 p-2 fs-6 btn btn-dark text-start">Home</a>
@@ -56,6 +56,7 @@
             </div>
             <div class="col mx-2  mb-5" id="main">
                 <h3 class="fw-bold">Hello {{request.user}}</h3>
+                
 
                 {%block mainblock%}
 

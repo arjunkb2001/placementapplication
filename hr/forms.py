@@ -19,6 +19,7 @@ class JobForm(forms.ModelForm):
         exclude=['status']
         widgets = {
             'category': forms.Select(attrs={"class":"form-select form-control"}),
+            'job_type': forms.Select(attrs={"class":"form-select form-control"}),
             'last_date': forms.DateInput(attrs={"class":"form-control","type":"date"})
         }
 

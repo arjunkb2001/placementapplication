@@ -13,6 +13,7 @@ class Jobs(models.Model):
     description=models.CharField(max_length=200)
     salary=models.PositiveIntegerField()
     experience=models.PositiveIntegerField(default=0)
+    created_date=models.DateTimeField(auto_now_add=True,null=True)
     last_date=models.DateField()
     vaccancies=models.PositiveIntegerField(default=1)
     poster=models.ImageField(upload_to="posterimages",null=True,blank=True)
@@ -21,6 +22,11 @@ class Jobs(models.Model):
     category=models.ForeignKey(Category,on_delete=models.DO_NOTHING)
     status=models.BooleanField(default=True)
     company=models.CharField(max_length=200,null=True)
+    options=(
+        ("part-time","part-time"),
+        ("full-time","full-time")
+    )
+    job_type=models.CharField(max_length=200,choices=options,default="full-time")
 
     def __str__(self) -> str:
         return self.title
@@ -31,14 +37,17 @@ class StudentProfile(models.Model):
     skills=models.CharField(max_length=200)
     age=models.PositiveIntegerField()
     options=(
-        ("male","male"),("female","female")
+        ("Male","Male"),("Female","Female"),("Others","Others")
     )
-    gender=models.CharField(max_length=200,choices=options,default="male")
+    gender=models.CharField(max_length=200,choices=options,default="Male")
     experience=models.PositiveIntegerField(default=0)
     address=models.CharField(max_length=200)
     phone=models.CharField(max_length=200)
     profile_pic=models.ImageField(upload_to="profilepics",null=True,blank=True)
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
+    
+    def __str__(self):
+        return self.user.username
 
 class Applications(models.Model):
     job=models.ForeignKey(Jobs,on_delete=models.DO_NOTHING)
