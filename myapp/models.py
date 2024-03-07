@@ -31,6 +31,10 @@ class Jobs(models.Model):
     def __str__(self) -> str:
         return self.title
     
+    def application_count(self):
+        qs=Applications.objects.filter(job=self).count()
+        return qs
+    
 class StudentProfile(models.Model):
     qualification=models.CharField(max_length=200)
     resume=models.FileField(upload_to="resumes",null=True,blank=True)
@@ -45,7 +49,8 @@ class StudentProfile(models.Model):
     phone=models.CharField(max_length=200)
     profile_pic=models.ImageField(upload_to="profilepics",null=True,blank=True)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
-    
+    saved_jobs=models.ManyToManyField(Jobs,null=True,related_name="saved",blank=True)
+
     def __str__(self):
         return self.user.username
 
@@ -54,7 +59,7 @@ class Applications(models.Model):
     student=models.ForeignKey(User,on_delete=models.CASCADE)
     applied_date=models.DateTimeField(auto_now_add=True)
     options=(
-        ("pending","pending"),("rejected","rejected"),("processing","processing")
+        ("pending","pending"),("rejected","rejected"),("processing","processing"),("shortlisted","shortlisted")
     )
     status=models.CharField(max_length=200,choices=options,default="pending")
 

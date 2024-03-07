@@ -11,5 +11,9 @@ urlpatterns = [
     path("signout/seeker",SignoutView.as_view(),name="logout"),
     path("job/<int:pk>/detail",JobDetailView.as_view(),name="detailjob"),
     path("job/<int:pk>/apply",ApplyJobView.as_view(),name="applyjob"),
+    path("application/all",ApplicationListView.as_view(),name="myapplications"),
+    path("job/<int:pk>/save",JobSaveView.as_view(),name="savedjob"),
+    path("job/all/save",SavedJobView.as_view(),name="jobsaveno"),
+
 ]
 

@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jobdb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Password@123',
         'HOST':'localhost',
         'PORT':'3306',
     }
@@ -134,3 +134,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#nmws cjlu oecs bftc
+
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER="arjunkbabu2001sep3@gmail.com"
+EMAIL_HOST_PASSWORD="nmws cjlu oecs bftc"
